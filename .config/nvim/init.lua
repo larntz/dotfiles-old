@@ -18,6 +18,7 @@ require('rust')
 require('complete')
 require('statusline')
 require('gitsigns').setup()
+require'lspconfig'.pyright.setup{}
 
 
 vim.lsp.buf.formatting_sync()

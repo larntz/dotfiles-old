@@ -18,12 +18,12 @@ return {
    automatically_reload_config = true,
     --appearance
     --window_background_opacity = 0.93,
-    window_padding = {
-	    left = 0,
-	    right = 0,
-	    top = 20,
-	    bottom = 0,
-    },
+    -- window_padding = {
+    --         left = 0,
+    --         right = 0,
+    --         top = 20,
+    --         bottom = 0,
+    -- },
     hide_tab_bar_if_only_one_tab = true,
     font_size = 12,
     color_scheme = "Gruvbox Dark",
@@ -73,6 +73,6 @@ return {
 	--{ key = "j",  mods="LEADER",     action=wezterm.action{ActivatePaneDirection="Down"}},
 	--{ key = "k",  mods="LEADER",     action=wezterm.action{ActivatePaneDirection="Up"}},
 	--{ key = "l",  mods="LEADER",     action=wezterm.action{ActivatePaneDirection="Right"}},
-	{ key = "F11", action="ToggleFullScreen"},
+	{ key = "Enter", mods="ALT", action="ToggleFullScreen"},
     },
 }

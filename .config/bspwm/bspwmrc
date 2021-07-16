@@ -1,0 +1,34 @@
+#! /bin/sh
+
+XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/larntz/.local/share/flatpak/exports/share"
+export XDG_DATA_DIRS
+systemctl --user import-environment DISPLAY # for clipmenud
+
+/home/larntz/.bin/change_wallpaper.sh &
+wmname LG3D # for java stuff like intellij https://www.reddit.com/r/bspwm/comments/267srd/problem_with_intellij_bspwm/
+polybar dp1 & disown
+# polybar dp2 & disown
+dunst & disown
+sxhkd & disown
+clipmenud & 
+#pasystray &
+
+bspc monitor DP-1 -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor DP-2 -d 11
+
+bspc config border_width           2
+bspc config window_gap             4 
+bspc config active_border_color \#928374
+bspc config normal_border_color \#83a598
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config click_to_focus       true
+
+bspc rule -a Gimp state=floating follow=on
+bspc rule -a Evolution-alarm-notify state=floating 
+bspc rule -a vmrc state=floating
+bspc rule -a firefox:Toolkit border=off sticky=on state=floating
+bspc rule -a Vmware-view desktop=^11 follow=on state=fullscreen flag=private
+bspc rule -a Gnome-calculator state=floating

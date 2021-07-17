@@ -17,20 +17,20 @@ end)
 return {
    automatically_reload_config = true,
     --appearance
-    --window_background_opacity = 0.93,
+    -- window_background_opacity = 0.83,
     -- window_padding = {
-    --         left = 0,
-    --         right = 0,
-    --         top = 20,
-    --         bottom = 0,
-    -- },
+    --          left = 0,
+    --          right = 0,
+    --          top = 20,
+    --          bottom = 0,
+    --  },
     hide_tab_bar_if_only_one_tab = true,
     font_size = 12,
     color_scheme = "Gruvbox Dark",
     warn_about_missing_glyphs = false,
     -- font = wezterm.font("JetBrains Mono"),
     font = wezterm.font_with_fallback({
-      "JetBrains Mono",
+      "JetBrainsMono Nerd Font Mono",
       "Fira Code",
     }),
 

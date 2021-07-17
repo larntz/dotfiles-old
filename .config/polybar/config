@@ -34,10 +34,11 @@ semi-trans-black = #aa000000
 
 
 [fonts]
-font-0 = "JetBrainsMono Nerd Font:style=Medium:size=9;3"
-font-1 = "JetBrainsMono Nerd Font:style=Bold:size=9;3"
+font-0 = "JetBrainsMono Nerd Font:style=Medium:size=10;3"
+font-1 = "JetBrainsMono Nerd Font:style=Bold:size=10;3"
 font-2 = "JetBrainsMono Nerd Font:size=15;5"
-font-3 = "Material Icons:size=15;5"
+font-3 = "Material Icons:size=16;5"
+font-4 = "Material Icons:size=18;5"
 
 [global/wm]
 margin-bottom = 0
@@ -45,17 +46,17 @@ margin-top = 0
 
 [bar/dp1]
 monitor = ${env:MONITOR:DP-1}
-bottom = true
-enable-ipc = true
+;bottom = true
+;enable-ipc = true
 width = 100%
-height = 25
+height = 30 
 fixed-center = true
-dim-value = 0.75
+;dim-value = 0.75
 
-background = ${colors.bg-alt}
+background = ${colors.background}
 foreground = ${colors.foreground}
 
-border-size = 0
+border-size = 0 
 
 ;padding-left = 2
 ;padding-right = 2
@@ -67,50 +68,11 @@ font-0 = ${fonts.font-0}
 font-1 = ${fonts.font-1}
 font-2 = ${fonts.font-2}
 font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
 
-modules-left = bspwm 
-modules-center = music
-modules-right = cpu memory date
-wm-restack = bspwm
-
-;scroll-up = #bspwm.next
-;scroll-down = #bspwm.prev
-
-cursor-click = pointer
-;cursor-scroll = ns-resize
-
-; ----------------------------------------------------------
-
-[bar/dp2]
-monitor = ${env:MONITOR:DP-2}
-bottom = true
-width = 100%
-height = 25
-fixed-center = true
-dim-value = 0.75
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-;line-color = ${colors.line}
-
-border-size = 0
-
-padding-left = 2
-padding-right = 2
-
-;module-margin-left = 2
-;module-margin-right = 2
-
-font-0 = ${fonts.font-0}
-font-1 = ${fonts.font-1}
-font-2 = ${fonts.font-2}
-
-modules-left = bspwm
-modules-center = music
-modules-right = date 
-
+modules-left = bspwm music 
+modules-center = date
+modules-right = cpu memory pulseaudio
 wm-restack = bspwm
 
 ;scroll-up = #bspwm.next
@@ -121,14 +83,38 @@ cursor-click = pointer
 
 ;; ========================
 
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = false
+click-middle = pavucontrol
+click-right = pavucontrol
+format-volume = <ramp-volume>
+format-volume-margin = 2
+label-volume = %percentage:2%%
+ramp-volume-0 = %{T3}奄%{T0} 
+ramp-volume-1 = %{T3}奔%{T0}
+ramp-volume-2 = %{T3}墳%{T0}
+ramp-volume-foreground = ${colors.bg-blue}
+
+label-muted = %{T3}ﱝ%{T0}
+format-muted = <label-muted>
+format-muted-margin = 2
+format-muted-foreground = ${colors.bg-blue}
+
+
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = true
 enable-click = false
 ;format = <label-monitor> <label-state>
 format = <label-state>
-label-focused-foreground = ${colors.foreground-alt}
-format-padding = 2
+;label-focused-foreground = ${colors.foreground-alt}
+format-margin = 2
+label-focused = %index:2%
+label-empty = 
+label-dimmed = 
+label-urgent = 
+label-occupied = 
 
 [module/xwindow]
 type = internal/xwindow
@@ -139,29 +125,27 @@ type = internal/cpu
 interval = 2
 
 format = <ramp-load><label> 
-format-background = ${colors.bg-alt}
 format-padding = 1
 label = %percentage:2%%
 label-foreground = ${colors.foreground}
 
-ramp-load-0 = %{T4} %{T-}
-ramp-load-1 = %{T4} %{T-}
-ramp-load-2 = %{T4} %{T-}
-ramp-load-3 = %{T4} %{T-}
-ramp-load-4 = %{T4} %{T-}
-ramp-load-5 = %{T4} %{T-}
-ramp-load-0-foreground = ${colors.green}
-ramp-load-1-foreground = ${colors.green}
-ramp-load-2-foreground = ${colors.green}
-ramp-load-3-foreground = ${colors.yellow}
-ramp-load-4-foreground = ${colors.red}
+ramp-load-0 = %{T3} %{T-}
+ramp-load-1 = %{T3} %{T-}
+ramp-load-2 = %{T3} %{T-}
+ramp-load-3 = %{T3} %{T-}
+ramp-load-4 = %{T3} %{T-}
+ramp-load-5 = %{T3} %{T-}
+ramp-load-0-foreground = ${colors.bg-blue}
+ramp-load-1-foreground = ${colors.bg-blue}
+ramp-load-2-foreground = ${colors.bg-blue}
+ramp-load-3-foreground = ${colors.bg-yellow}
+ramp-load-4-foreground = ${colors.bg-red}
 
 [module/memory]
 type = internal/memory
 interval = 2 
 
 format = <ramp-used><label>
-format-background = ${colors.bg-alt}
 format-padding = 1
 label = %percentage_used:2%%
 label-foreground = ${colors.fg}
@@ -172,21 +156,30 @@ ramp-used-1 = %{T3} %{T-}
 ramp-used-2 = %{T3} %{T-}
 ramp-used-3 = %{T3} %{T-}
 ramp-used-4 = %{T3} %{T-}
-ramp-used-0-foreground = ${colors.green}
-ramp-used-1-foreground = ${colors.green}
-ramp-used-2-foreground = ${colors.green}
-ramp-used-3-foreground = ${colors.yellow}
-ramp-used-4-foreground = ${colors.red}
+ramp-used-0-foreground = ${colors.bg-blue}
+ramp-used-1-foreground = ${colors.bg-blue}
+ramp-used-2-foreground = ${colors.bg-blue}
+ramp-used-3-foreground = ${colors.bg-yellow}
+ramp-used-4-foreground = ${colors.bg-red}
 
 [module/date]
 type = internal/date
 #date = %Y-%m-%d %H:%M
 date = %A, %B %d %H:%M
 interval = 5
-format-padding = 2
-format-background = ${colors.bg-alt}
+label-font = 2
 
 [module/music]
 type = custom/script
 exec = /home/larntz/.bin/dunstify_music.py brief
+click-left = playerctl play-pause
+click-right = playerctl next
 interval = 1
+format = <label>
+label-alignment = left 
+label-minlen = 50
+label-maxlen = 50
+format-margin = 3
+format-padding = 2
+format-background = ${colors.bg-blue} 
+format-foreground = ${colors.bg-darker}

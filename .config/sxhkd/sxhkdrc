@@ -5,9 +5,6 @@
 # terminal emulator
 super + Return
     wezterm start tmux
-    #kitty
-    #gnome-terminal
-    #urxvt
 
 # program launcher
 super + @space

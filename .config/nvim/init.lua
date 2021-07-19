@@ -11,7 +11,7 @@ require "paq" {
 	'kyazdani42/nvim-web-devicons';
 	'morhetz/gruvbox';
 	'lewis6991/gitsigns.nvim';
-	
+	'preservim/nerdtree',
 }
 
 require('rust')

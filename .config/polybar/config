@@ -88,17 +88,17 @@ type = internal/pulseaudio
 use-ui-max = false
 click-middle = pavucontrol
 click-right = pavucontrol
-format-volume = <ramp-volume>
-format-volume-margin = 2
+format-volume = <ramp-volume> <label-volume>
+format-volume-margin = 1
 label-volume = %percentage:2%%
 ramp-volume-0 = %{T3}奄%{T0} 
 ramp-volume-1 = %{T3}奔%{T0}
 ramp-volume-2 = %{T3}墳%{T0}
 ramp-volume-foreground = ${colors.bg-blue}
 
-label-muted = %{T3}ﱝ%{T0}
+label-muted = %{T3}ﱝ%{T0} %percentage:2%%
 format-muted = <label-muted>
-format-muted-margin = 2
+format-muted-margin = 1
 format-muted-foreground = ${colors.bg-blue}
 
 

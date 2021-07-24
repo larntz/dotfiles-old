@@ -18,7 +18,9 @@ require('rust')
 require('complete')
 require('statusline')
 require('gitsigns').setup()
-require'lspconfig'.pyright.setup{}
+require('lspconfig').pyright.setup{}
+require('lspconfig').vuels.setup{}
+require('lspconfig').tsserver.setup{}
 
 
 vim.lsp.buf.formatting_sync()
@@ -27,6 +29,12 @@ vim.o.signcolumn = "yes"
 vim.o.updatetime = 300
 vim.o.number = true
 vim.o.cursorline = true
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.mouse = "a"
 vim.cmd('colorscheme gruvbox')
 
 vim.g.rustfmt_autosave = 1
+

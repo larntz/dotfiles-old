@@ -1,3 +1,14 @@
+-- paq installation:
+-- https://github.com/savq/paq-nvim
+--
+-- linux
+-- git clone --depth=1 https://github.com/savq/paq-nvim.git \
+--  "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
+--
+--  windows
+--  git clone https://github.com/savq/paq-nvim.git "$env:LOCALAPPDATA\nvim-data\site\pack\paqs\start\paq-nvim"
+--
+
 require "paq" {
 	'savq/paq-nvim'; 
 	'neovim/nvim-lspconfig';
@@ -11,7 +22,6 @@ require "paq" {
 	'kyazdani42/nvim-web-devicons';
 	'morhetz/gruvbox';
 	'lewis6991/gitsigns.nvim';
-	'preservim/nerdtree',
 }
 
 require('rust')
